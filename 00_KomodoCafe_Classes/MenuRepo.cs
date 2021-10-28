@@ -8,7 +8,7 @@ namespace _00_KomodoCafe_Classes
 {
     public class MenuRepo
     {
-        protected readonly List<Menu> _listOfMenuItems = new List<Menu>();
+        public List<Menu> _listOfMenuItems = new List<Menu>();
         public bool AddMenuItem(Menu item)
         {
             int initialCountOfItems = _listOfMenuItems.Count();
@@ -40,7 +40,7 @@ namespace _00_KomodoCafe_Classes
         public bool DeleteMenuItem(int itemNumber)
         {
             Menu item = SearchByMenuItemNumber(itemNumber);
-            if (itemNumber == null)
+            if (itemNumber.Equals(null))
             {
                 return false;
             }
