@@ -11,49 +11,23 @@ namespace _00_KomodoCafe_Classes
         public List<Menu> _listOfMenuItems = new List<Menu>();
         public bool AddMenuItem(Menu item)
         {
-            int initialCountOfItems = _listOfMenuItems.Count();
+            int ogCount = _listOfMenuItems.Count();
             _listOfMenuItems.Add(item);
-            if (_listOfMenuItems.Count > initialCountOfItems)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            int newCount = _listOfMenuItems.Count();
+            bool wasAdded = (newCount > ogCount) ? true : false;
+            return wasAdded;
         }
         public List<Menu> DisplayMenuItems()
         {
             return _listOfMenuItems;
         }
-        public Menu SearchByMenuItemNumber(int id)
+        public bool DeleteMenuItem(Menu item)
         {
-            foreach (Menu item in _listOfMenuItems)
-            {
-                if (item.MealNumber == id)
-                {
-                    return item;
-                }
-            }
-            return null;
-        }
-        public bool DeleteMenuItem(int itemNumber)
-        {
-            Menu item = SearchByMenuItemNumber(itemNumber);
-            if (itemNumber.Equals(null))
-            {
-                return false;
-            }
-            int initialCountOfItems = _listOfMenuItems.Count;
+            int ogCount = _listOfMenuItems.Count();
             _listOfMenuItems.Remove(item);
-            if (initialCountOfItems > _listOfMenuItems.Count)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            int newCount = _listOfMenuItems.Count();
+            bool wasDeleted = (newCount < ogCount) ? true : false;
+            return wasDeleted;
         }
     }
 }

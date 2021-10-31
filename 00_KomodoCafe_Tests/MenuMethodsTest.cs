@@ -8,11 +8,8 @@ namespace _00_KomodoCafe_Tests
     [TestClass]
     public class MenuMethodsTest
     {
-        [TestClass]
-        public class RepoTests
-        {
             MenuRepo _repo = new MenuRepo();
-            Menu _item = new Menu()
+            Menu item = new Menu()
             {
                 MealNumber = 1,
                 MealName = "PeanutButtaJellehTime",
@@ -20,32 +17,22 @@ namespace _00_KomodoCafe_Tests
                 ItemIngredients = "2 slices of honeywheat bread, peanut butter, jelly",
                 ItemPrice = 4.99
             };
+        
+        [TestMethod]
+        public void Test_AddMenuItems()
+        {
+            Menu item = new Menu();
+            MenuRepo repo = new MenuRepo();
+            bool wasAdded = repo.AddMenuItem(item);
+            Assert.IsTrue(wasAdded);
         }
         [TestMethod]
-        public void TestAddMenuItems_ShouldReturnTrue()
+        public void Test_DeleteMenuItem()
         {
-            MenuRepo _repo = new MenuRepo();
             Menu item = new Menu();
-            List<Menu> localList = _repo.DisplayMenuItems();
-            int beforeCount = localList.Count;
-            _repo.AddMenuItem(item);
-            List <Menu> newLocalList = _repo.DisplayMenuItems();
-            int newCount = newLocalList.Count;
-            bool result = newCount == (beforeCount + 1) ? true : false;
-            Assert.IsTrue(result);
-        }
-        [TestMethod]
-        public void Test_DeleteMenuItems(int itemNumber)
-        {
-            MenuRepo _repo = new MenuRepo();
-            Menu item = new Menu();
-            List<Menu> localList = _repo.DisplayMenuItems();
-            int beforeCount = localList.Count;
-            _repo.DeleteMenuItem(itemNumber);
-            List<Menu> newLocalList = _repo.DisplayMenuItems();
-            int newCount = newLocalList.Count;
-            bool result = newCount == (beforeCount - 1) ? true : false;
-            Assert.IsTrue(result);
+            MenuRepo repo = new MenuRepo();
+            bool wasDeleted = repo.DeleteMenuItem(item);
+            Assert.IsFalse(wasDeleted);
         }
     }
 }
