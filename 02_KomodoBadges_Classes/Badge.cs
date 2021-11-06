@@ -17,7 +17,6 @@ namespace _02_KomodoBadges_Classes
         {
             BadgeID = id;
         }
-
         public Badge(int id, List<string> doors)
         {
             BadgeID = id;

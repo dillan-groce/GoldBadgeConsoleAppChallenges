@@ -10,7 +10,6 @@ namespace _02_KomodoBadges_Console
     public class ProgramUI
     {
         private BadgeRepo _repo = new BadgeRepo();
-
         public void Run()
         {
             SeedBadges();

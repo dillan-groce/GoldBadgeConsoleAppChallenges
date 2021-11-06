@@ -23,8 +23,9 @@ namespace _00_KomodoCafe_Tests
         {
             Menu item = new Menu();
             MenuRepo repo = new MenuRepo();
+            repo.AddMenuItem(item);
             bool wasDeleted = repo.DeleteMenuItem(item);
-            Assert.IsFalse(wasDeleted);
+            Assert.IsTrue(wasDeleted);
         }
         [TestMethod]
         public void Test_ViewMenu()
